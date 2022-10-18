@@ -37,10 +37,37 @@ public class Hangar {
               helicoptero = ((Helicoptero)aeronaveActual);
           }
       }
-  
   return helicoptero;
   }
+  public Avion avionMenosCapacidad(){
+  Avion avion= null;
+  double mayor = Double.MAX_VALUE;
+      for (Aeronave aeronaveActual : this.getMisAeronaves()) {
+          if (aeronaveActual instanceof Avion && ((Avion)aeronaveActual).getCapacidadBodega() < mayor ) {
+              mayor = ((Avion) aeronaveActual).getCapacidadBodega();
+              avion = ((Avion)aeronaveActual);
+          }
+      }
+  return avion;
+  }
    
+  
+  public double promedioPeso(){
+  double promedio= 0.0;
+  double suma = 0.0;
+  int  contador=0;
+   for (Aeronave aeronaveActual: this.getMisAeronaves()) {
+          if (aeronaveActual instanceof Ultraligero) {
+              suma+=((Ultraligero) aeronaveActual).getPeso();
+              contador+=1;
+          }
+      }
+      if (contador == 0 ) {
+          promedio = 0;
+      }
+   promedio = suma / contador;      
+  return promedio;
+  }
     /**
      * @return the id
      */

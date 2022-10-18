@@ -15,6 +15,15 @@ public class ProgramacionVuelo {
     private String hora;
     private Aeronave miAeronave;
     private Viajero miViajero;
+
+    public ProgramacionVuelo(String id, String fecha, String hora) {
+        this.id = id;
+        this.fecha = fecha;
+        this.hora = hora;
+    }
+    
+    
+    
     /**
      * @return the id
      */

@@ -15,12 +15,6 @@ public class Aeropuerto {
     private String id;
     private LinkedList<Hangar> misHangares = new LinkedList<>();
     private LinkedList<Viajero> misViajeros = new LinkedList<>();
-    /**
-     * @return the id
-     */
-    public String getId() {
-        return id;
-    }
 
     public Aeropuerto(String id) {
         this.id = id;
@@ -28,13 +22,23 @@ public class Aeropuerto {
         this.misViajeros = new LinkedList<>();
     }
 
+  
+    
+
     public void crearHangar(String id){
         Hangar nuevoHangar = new Hangar(id);
         this.getMisHangares().add(nuevoHangar);
     }
-    public void crearViajero (String id, String numCuenta, String cedula, String nombre, String nacionalidad, int edad){
-     Viajero nuevoViajero = new  Multimillonario(id, numCuenta, cedula, nombre, nacionalidad, edad);
-     this.getMisViajeros().add(nuevoViajero);
+    
+    
+    public void crearViajero (String cedula, String nombre, String nacionalidad, int edad){
+     Viajero nuevoViajero = new  Viajero(cedula, nombre, nacionalidad, edad) {
+     };
+          this.getMisViajeros().add(nuevoViajero);
+    }
+    public void crearMultimillonario(String id, String numCuenta, String cedula, String nombre, String nacionalidad, int edad){
+    Multimillonario nuevoMulltimillonario = new  Multimillonario(id, numCuenta, cedula, nombre, nacionalidad, edad);
+    this.getMisViajeros().add(nuevoMulltimillonario);
     }
     
     public int  cantidadMillonarios(){
@@ -46,6 +50,8 @@ public class Aeropuerto {
         }        
     return respuesta;
     }
+    
+    
     public Multimillonario buscarMultimillonario (String cedula){
         Multimillonario multimillonario = null;
         for (Viajero multimillonarioActual: this.getMisViajeros()) {
@@ -55,6 +61,8 @@ public class Aeropuerto {
         }       
         return multimillonario;
     }
+    
+    
     public Viajero viajeroMasVuelos(){
     Viajero viajero = null;
     int mayor =Integer.MIN_VALUE;
@@ -63,10 +71,12 @@ public class Aeropuerto {
                 mayor= viajeroActual.getMisVuelos().size();
                 viajero = viajeroActual;
             }
-        }
-    
+        }   
+        
     return viajero;
     }
+    
+    
     public Helicoptero helicopterMenosRevoluciones(){
     Helicoptero helicoptero= null;
     int mayor = Integer.MIN_VALUE;
@@ -77,15 +87,32 @@ public class Aeropuerto {
                 helicoptero = hangarActual.masRevoluciones();
             }
         }
-    
-    
     return helicoptero;
     }
-    /**
-     * @param id the id to set
-     */
-    public void setId(String id) {
-        this.id = id;
+    
+    public Avion avionMenosCapacidadBodega(){
+    Avion avion = null;
+    double mayor = Double.MAX_VALUE;
+        for (Hangar hangarActual : this.getMisHangares()) {
+            double masCapacidad = hangarActual.avionMenosCapacidad().getCapacidadBodega();
+            if (masCapacidad< mayor) {
+                mayor= hangarActual.avionMenosCapacidad().getCapacidadBodega();
+                avion= hangarActual.avionMenosCapacidad();
+            }
+        }
+    
+    return avion;
+    }
+    
+    public double promedioPesoUltraligero (){
+        double suma = 0.0;
+        double promedio = 0.0;
+        int contador = this.getMisHangares().size();
+        for (Hangar hangarActual : this.getMisHangares()) {
+            suma+= hangarActual.promedioPeso();
+        }
+        promedio= suma/ contador;
+    return promedio;
     }
 
     /**
@@ -114,6 +141,20 @@ public class Aeropuerto {
      */
     public void setMisViajeros(LinkedList<Viajero> misViajeros) {
         this.misViajeros = misViajeros;
+    }
+
+    /**
+     * @return the id
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(String id) {
+        this.id = id;
     }
     
 }
