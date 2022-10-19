@@ -31,16 +31,6 @@ public class Aeropuerto {
     }
     
     
-    public void crearViajero (String cedula, String nombre, String nacionalidad, int edad){
-     Viajero nuevoViajero = new  Viajero(cedula, nombre, nacionalidad, edad) {
-     };
-          this.getMisViajeros().add(nuevoViajero);
-    }
-    public void crearMultimillonario(String id, String numCuenta, String cedula, String nombre, String nacionalidad, int edad){
-    Multimillonario nuevoMulltimillonario = new  Multimillonario(id, numCuenta, cedula, nombre, nacionalidad, edad);
-    this.getMisViajeros().add(nuevoMulltimillonario);
-    }
-    
     public int  cantidadMillonarios(){
     int respuesta =0;
         for (Viajero viajeroActual: this.getMisViajeros()) {

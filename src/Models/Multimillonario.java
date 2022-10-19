@@ -15,12 +15,14 @@ public class Multimillonario extends Viajero {
     private String id;
     private String numCuenta;
     private LinkedList<Aeronave> misAeronaves;
+    private LinkedList<Hangar> misHangares;
 
     public Multimillonario(String id, String numCuenta, String cedula, String nombre, String nacionalidad, int edad) {
         super(cedula, nombre, nacionalidad, edad);
         this.id = id;
         this.numCuenta = numCuenta; 
         this.misAeronaves = new LinkedList<>();
+        this.misHangares  =  new LinkedList<>();
     }
     
     /**
@@ -63,6 +65,20 @@ public class Multimillonario extends Viajero {
      */
     public void setMisAeronaves(LinkedList<Aeronave> misAeronaves) {
         this.misAeronaves = misAeronaves;
+    }
+
+    /**
+     * @return the misHangares
+     */
+    public LinkedList<Hangar> getMisHangares() {
+        return misHangares;
+    }
+
+    /**
+     * @param misHangares the misHangares to set
+     */
+    public void setMisHangares(LinkedList<Hangar> misHangares) {
+        this.misHangares = misHangares;
     }
     
 }
