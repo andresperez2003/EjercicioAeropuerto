@@ -55,7 +55,7 @@ public class EjercicioAeropuerto {
         Avion avion3 = new Avion("08", "Radial", 71.4, "008", "Azul", 40, "Grecia");
         Avion avion4 = new Avion("09", "En linea", 64.2, "009", "Negro", 40, "Colombia");
         
-        laDorada.crearViajero("001", "Andres", "Colombia", 19);
+        Viajero vijaero1 = new Viajero("001", "Andres", "Colombia", 19);
         laDorada.crearViajero("002", "Juan", "Brasil", 30);
         laDorada.crearViajero("003", "Salome", "Canada", 54);
         laDorada.crearViajero("004", "Maria", "Marruecos", 32);
